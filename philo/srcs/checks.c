@@ -1,4 +1,4 @@
-#include <philo.h>
+#include "philo.h"
 
 // comprobar que es num, que no es neg
 

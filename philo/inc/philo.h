@@ -10,7 +10,7 @@ typedef struct	s_data;
 
 typedef	struct	s_fork
 {
-	pthread_mutex_t fork;
+	pthread_mutex_t fork_mutex;
 	int				fork_id;
 }				t_fork;
 
@@ -24,7 +24,6 @@ typedef struct	s_philo
 	t_fork			*left_fork;
 	t_fork			*right_fork;
 	struct s_data	*data;
-
 }
 
 typedef struct	s_data
@@ -35,7 +34,7 @@ typedef struct	s_data
 	int				time_to_sleep;
 	int				nbr_max_meals;
 	int				start;
-	bool			end;
+	bool			dead;
 	pthread_mutex_t	dead_mutex;
 	pthread_mutex_t	meal_mutex;
 	pthread_mutex_t	write_mutex;
