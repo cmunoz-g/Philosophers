@@ -1,7 +1,10 @@
 #include "philo.h"
 
-think 
+void	think(t_philo *philo)
+{
+	write_message(philo->philo_id, "is thinking", philo->data);
+} 
 
-eat 
+void	eat(t_philo *philo) 
 
-sleep
+void	sleep(t_philo *philo)

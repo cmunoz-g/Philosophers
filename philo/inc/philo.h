@@ -20,11 +20,10 @@ typedef struct	s_philo
 	int				philo_id;
 	int				num_meals;
 	int				last_meal;
-	bool			full;
 	t_fork			*left_fork;
 	t_fork			*right_fork;
 	struct s_data	*data;
-}
+}				t_philo;
 
 typedef struct	s_data
 {
@@ -34,12 +33,16 @@ typedef struct	s_data
 	int				time_to_sleep;
 	int				nbr_max_meals;
 	int				start;
+	bool			max_meals_arg;
 	bool			dead;
+	bool			full;
 	pthread_mutex_t	dead_mutex;
 	pthread_mutex_t	meal_mutex;
 	pthread_mutex_t	write_mutex;
 	t_philo			*philos;
 	t_fork			*forks;
 }				t_data;
+
+void	write_message(int philo_id, char *message, t_data *data);
 
 #endif

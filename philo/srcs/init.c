@@ -22,14 +22,12 @@ void	init_philos(t_data *data)
 		data->philos[i].philo_id = i + 1;
 		data->philos[i].num_meals = 0;
 		data->philos[i].last_meal = get_time(data); // revisar como implementar esto y porque la gente se ralla
-		data->philos[i].full = false;
-		data->philos[i].full = false;
 		data->philos[i].right_fork = &data->forks[i];
 		if (i == 0)
 			data->philos[i].left_fork = &data->forks[data->nbr_philos - 1];
 		else
 			data->philos[i].left_fork = &data->forks[i - 1];
-		data->philos[i].data = data;	// puede que no necesite esto realmente, si siempre estoy pasando data.
+		data->philos[i].data = data;
 		i++;
 	}
 
@@ -38,6 +36,7 @@ void	init_philos(t_data *data)
 void	init_data(t_data *data)
 {
 	data->dead = false;
+	data->full = false;
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->nbr_philos);
 	if (!data->philos)
 		error("Memory issues while allocating philo structures");

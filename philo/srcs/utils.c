@@ -1,5 +1,12 @@
 #include "philo.h"
 
+// get time y usleep functions implementar
+
+void	write_message(int philo_id, char *message, t_data *data)
+{
+
+}
+
 int	ft_isspace(char c)
 {
 	if (c == 32 || (c >= 9 && c <= 13))
