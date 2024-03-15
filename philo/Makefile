@@ -1,11 +1,11 @@
 NAME = philo
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-LDFLAGS = -fsanitize=address -fsanitize=thread
+LDFLAGS = -fsanitize=thread
 INCLUDE = inc/
 FOLDER = srcs/
 OBJFOLDER = obj/
-SRCS = main.c checks.c error.c utils.c
+SRCS = main.c actions.c checks.c clean.c dinner.c init.c monitoring.c time.c utils.c
 
 OBJS = $(SRCS:%.c=$(OBJFOLDER)%.o)
 

@@ -5,7 +5,7 @@
 void	create_threads(t_data *data)
 {
 	pthread_t		monitor;
-	static size_t	i = 0;
+	static int		i = 0;
 
 	if (pthread_create(&monitor, NULL, monitoring, (void *) &data))
 		error("Could not create the monitoring thread");
@@ -20,20 +20,22 @@ void	create_threads(t_data *data)
 	i = 0;
 	while (i < data->nbr_philos)
 	{
-		if (pthread_join(data->philos[i].thread_id, NULL))
+		if (pthread_join(data->philos[i].thread_id, NULL)) 
 			error("Could not join a philo thread");
 		i++;
 	}
 }
 
-void	*dinner(void *philo)
+void	*dinner(void *pointer)
 {
-	philo = (t_philo *)philo;
-	while (!check_end(&philo))
+	t_philo	*philo;
+	
+	philo = (t_philo *)pointer;
+	while (!check_end(philo))
 	{
-		eat(&philo);
-		sleep(&philo);
-		think(&philo);
+		eat(philo);
+		dream(philo);
+		think(philo);
 	}
 	return (NULL); // revisar si los threads nos obligan a que esta ft sea void * o si puede ser void
 }

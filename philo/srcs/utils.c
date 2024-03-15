@@ -1,10 +1,19 @@
 #include "philo.h"
 
-// get time y usleep functions implementar
-
-void	write_message(int philo_id, char *message, t_data *data)
+void	error(char *error_msg)
 {
+	printf("Error: %s\n", error_msg);
+	exit(EXIT_FAILURE);
+}
 
+void	write_message(int philo_id, char *message, t_data *data) // meter colores y demas, meter que si cogen un tenedor diga que tenedor es?
+{
+	int	ms;
+
+	pthread_mutex_lock(&(data->write_mutex));
+	ms = get_time(data->start);
+	printf("%dms	%d %s\n", ms, philo_id, message); 
+	pthread_mutex_unlock(&(data->write_mutex));
 }
 
 int	ft_isspace(char c)

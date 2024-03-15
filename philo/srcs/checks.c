@@ -1,15 +1,15 @@
 #include "philo.h"
 
-// comprobar que es num, que no es neg
-
 int		check_end(t_philo *philo)
 {
-	if (philo->data.dead)
+	pthread_mutex_lock(&(philo->data->dead_mutex));
+	if (philo->data->dead)
+	{
+		pthread_mutex_unlock(&(philo->data->dead_mutex));
 		return (1);
-	else if (philo->data.full)
-		return (1);
-	else
-		return (0);
+	}
+	pthread_mutex_unlock(&(philo->data->dead_mutex));
+	return (0);
 }
 
 void	check_nbr(char *str)

@@ -1,5 +1,7 @@
 #include "philo.h"
 
+// gestionar el segv con ./philo 4 310 200 100
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
