@@ -15,6 +15,6 @@ void	precise_usleep(t_data *data, int ms)
 
 	start = get_time(data->start);
 	while ((get_time(data->start) - start) < ms)
-		if (usleep(500)) // 500 o 50?
+		if (usleep(50)) // 500 o 50?
 			error("usleep() failed"); // lo mismo que en el error de get time
 }

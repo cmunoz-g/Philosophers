@@ -12,7 +12,10 @@ void	write_message(int philo_id, char *message, t_data *data) // meter colores y
 
 	pthread_mutex_lock(&(data->write_mutex));
 	ms = get_time(data->start);
-	printf("%dms	%d %s\n", ms, philo_id, message); 
+	pthread_mutex_lock(&(data->dead_mutex));
+	if (!data->dead)
+		printf("%dms	%d %s\n", ms, philo_id, message); 
+	pthread_mutex_unlock(&(data->dead_mutex));
 	pthread_mutex_unlock(&(data->write_mutex));
 }
 
