@@ -1,7 +1,13 @@
 #include "philo.h"
 
-// PROBLEMA LOS MUTEX DE LOS FORKS NO LOS RECONOCE
-// PARECE QUE EL MUTEX DE WRITE TAMPOCO???
+// arreglar el problema de 1 philo solo
+
+// con 5 800 200 200  y  5 800 200 200 7 el 1 se muere :(
+
+// con 4 410 200 200 el 1 se muere
+
+// arreglar para que salga el mensaje de morir el ultimo
+
 
 int	main(int argc, char *argv[])
 {
