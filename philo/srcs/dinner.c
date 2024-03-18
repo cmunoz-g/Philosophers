@@ -7,11 +7,11 @@ void	create_threads(t_data *data)
 	pthread_t		monitor;
 	static int		i = 0;
 
-	if (pthread_create(&monitor, NULL, monitoring, (void *) &data))
+	if (pthread_create(&monitor, NULL, monitoring, (void *) data))
 		error("Could not create the monitoring thread");
 	while (i < data->nbr_philos)
 	{
-		if (pthread_create(&data->philos[i].thread_id, NULL, dinner, (void *) &data->philos[i]))
+		if (pthread_create(&data->philos[i].thread_id, NULL, &dinner, (void *) &data->philos[i]))
 			error("Could not create a philo thread"); // revisar que pasa cuando por ejemplo falla la ultima.
 		i++;
 	}

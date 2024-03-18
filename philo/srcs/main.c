@@ -1,6 +1,7 @@
 #include "philo.h"
 
-// gestionar el segv con ./philo 4 310 200 100
+// PROBLEMA LOS MUTEX DE LOS FORKS NO LOS RECONOCE
+// PARECE QUE EL MUTEX DE WRITE TAMPOCO???
 
 int	main(int argc, char *argv[])
 {
@@ -11,7 +12,7 @@ int	main(int argc, char *argv[])
 		check_input(argc, argv, &data);
 		init_data(&data);
 		create_threads(&data);
-		clean(&data); // quiza no haga falta tener esto aqui, sino que lo llame la ft que checkea si han comido x veces o uno ha muerto
+		clean(&data); 
 	}
 	else
 		error("Wrong number of arguments");

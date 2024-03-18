@@ -36,7 +36,7 @@ typedef struct	s_data
 	int				nbr_max_meals;
 	int				start;
 	int				finished;
-	bool			max_meals_arg;
+	int				argc;
 	bool			dead;
 	pthread_mutex_t	dead_mutex;
 	pthread_mutex_t	meal_mutex;

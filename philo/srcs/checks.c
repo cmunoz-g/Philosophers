@@ -48,10 +48,6 @@ void	check_input(int argc, char **argv, t_data *data)
 	if (data->time_to_sleep <= 0)
 		error("Not enough time to sleep");
 	if (argc == 6)
-	{
-		data->max_meals_arg = true;
 		data->nbr_max_meals = ft_atoi(argv[5]); // revisar el caso en el que nbr_max_meals es 0
-	}
-	else
-		data->max_meals_arg = false;
+	data->argc = argc;
 }
