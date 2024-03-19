@@ -22,6 +22,7 @@ typedef struct	s_philo
 	int				philo_id;
 	int				num_meals;
 	int				last_meal;
+	bool			full;
 	t_fork			*left_fork;
 	t_fork			*right_fork;
 	struct s_data	*data;
@@ -35,7 +36,6 @@ typedef struct	s_data
 	int				time_to_sleep;
 	int				nbr_max_meals;
 	int				start;
-	int				finished;
 	int				argc;
 	bool			dead;
 	pthread_mutex_t	dead_mutex;
@@ -55,6 +55,7 @@ void	think(t_philo *philo);
 void	check_input(int argc, char **argv, t_data *data);
 void	check_nbr(char *str);
 int		check_end(t_philo *philo);
+int		check_full(t_data *data);
 
 // clean.c
 void	clean(t_data *data);

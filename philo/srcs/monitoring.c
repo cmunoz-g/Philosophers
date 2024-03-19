@@ -32,10 +32,10 @@ int	full_status(t_data *data)
 	while (i < data->nbr_philos)
 	{
 		if (data->philos[i].num_meals == data->nbr_max_meals)
-			data->finished++;
+			data->philos[i].full = true;
 		i++;
 	}
-	if (data->finished == data->nbr_philos)
+	if (!check_full(data))
 	{
 		pthread_mutex_lock(&(data->dead_mutex));
 		data->dead = true;

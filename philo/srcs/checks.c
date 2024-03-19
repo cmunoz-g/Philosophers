@@ -51,3 +51,16 @@ void	check_input(int argc, char **argv, t_data *data)
 		data->nbr_max_meals = ft_atoi(argv[5]); // revisar el caso en el que nbr_max_meals es 0
 	data->argc = argc;
 }
+int	check_full(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->nbr_philos)
+	{
+		if (data->philos[i].full == false)
+			return (1);
+		i++;
+	}
+	return (0);
+}
