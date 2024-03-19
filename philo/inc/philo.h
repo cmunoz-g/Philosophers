@@ -38,6 +38,8 @@ typedef struct	s_data
 	int				start;
 	int				argc;
 	bool			dead;
+	bool			error_flag;
+	pthread_mutex_t error_mutex;
 	pthread_mutex_t	dead_mutex;
 	pthread_mutex_t	meal_mutex;
 	pthread_mutex_t	write_mutex;
@@ -56,6 +58,7 @@ void	check_input(int argc, char **argv, t_data *data);
 void	check_nbr(char *str);
 int		check_end(t_philo *philo);
 int		check_full(t_data *data);
+int		check_error(t_philo *philo);
 
 // clean.c
 void	clean(t_data *data);
@@ -75,8 +78,8 @@ int		full_status(t_data *data);
 int		dead_status(t_data *data);
 
 // time.c
-int		get_time(void);
-void	precise_usleep(int ms);
+int		get_time(t_data *data);
+void	precise_usleep(int ms, t_data *data);
 
 // utils.c
 int		ft_atoi(const char *nptr);

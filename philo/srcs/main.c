@@ -1,8 +1,8 @@
 #include "philo.h"
 
-// arreglar para que salga el mensaje de morir el ultimo
+// ver que hacer con los error return de los mutex init
 
-// arreglar para limpiar todos los threads si falla 1
+// revisar lo del >= en time_to_die (monitoring.c)
 
 // colores 
 

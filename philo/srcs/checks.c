@@ -1,5 +1,17 @@
 #include "philo.h"
 
+int		check_error(t_philo *philo)
+{
+	pthread_mutex_lock(&(philo->data->error_mutex));
+	if (philo->data->error_flag == true)
+	{
+		pthread_mutex_unlock(&(philo->data->error_mutex));
+		return (1);
+	}
+	pthread_mutex_unlock(&(philo->data->error_mutex));
+	return (0);
+}
+
 int		check_end(t_philo *philo)
 {
 	pthread_mutex_lock(&(philo->data->dead_mutex));

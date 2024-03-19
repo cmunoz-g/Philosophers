@@ -11,7 +11,7 @@ void	write_message(int philo_id, char *message, t_data *data, int fork_id) // me
 	int	ms;
 
 	pthread_mutex_lock(&(data->write_mutex));
-	ms = get_time();
+	ms = get_time(data);
 	pthread_mutex_lock(&(data->dead_mutex));
 	if (!data->dead)
 	{
