@@ -2,7 +2,7 @@
 
 void	think(t_philo *philo)
 {
-	write_message(philo->philo_id, "is thinking", philo->data, 0);
+	write_message(philo->philo_id, "is thinking\t   "EM_THINK, philo->data, 0, GREEN);
 } 
 
 void	eat(t_philo *philo)
@@ -26,7 +26,7 @@ void	eat(t_philo *philo)
 void	eat_aux(t_philo *philo, t_fork *first, t_fork *second)
 {
 	pthread_mutex_lock(&first->fork_mutex);
-	write_message(philo->philo_id, "has taken fork number", philo->data, first->fork_id);
+	write_message(philo->philo_id, "has taken fork", philo->data, first->fork_id, WHITE);
 	if (philo->data->nbr_philos == 1)
 	{
 		precise_usleep(philo->data->time_to_die, philo->data);
@@ -34,8 +34,8 @@ void	eat_aux(t_philo *philo, t_fork *first, t_fork *second)
 		return ;
 	}
 	pthread_mutex_lock(&second->fork_mutex);
-	write_message(philo->philo_id, "has taken fork number", philo->data, second->fork_id);
-	write_message(philo->philo_id, "is eating", philo->data, 0);
+	write_message(philo->philo_id, "has taken fork", philo->data, second->fork_id, WHITE);
+	write_message(philo->philo_id, "is eating\t   "EM_EAT, philo->data, 0, YELLOW);
 	pthread_mutex_lock(&(philo->data->meal_mutex));
 	philo->last_meal = get_time(philo->data); 
 	philo->num_meals++;
@@ -47,7 +47,7 @@ void	eat_aux(t_philo *philo, t_fork *first, t_fork *second)
 
 void	dream(t_philo *philo)
 {
-	write_message(philo->philo_id, "is sleeping", philo->data, 0);
+	write_message(philo->philo_id, "is sleeping\t   "EM_SLEEP, philo->data, 0, TEAL);
 	precise_usleep(philo->data->time_to_sleep, philo->data);
 }
 

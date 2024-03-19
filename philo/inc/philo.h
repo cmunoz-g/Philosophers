@@ -7,6 +7,16 @@
 # include <stdbool.h>
 # include <sys/time.h>
 # include <stdlib.h>
+# define YELLOW "\x1b[33m" // eating
+# define TEAL "\033[0;36m" // sleeping
+# define GREEN "\x1b[32m" // thinking
+# define RED "\x1b[31m" // died
+# define WHITE "\033[0;37m"
+# define EM_DEAD "💀"
+# define EM_EAT "🍕"
+# define EM_SLEEP "😴"
+# define EM_FORK "🍴"
+# define EM_THINK "🤯"
 
 typedef struct	s_data	t_data;
 
@@ -84,7 +94,7 @@ void	precise_usleep(int ms, t_data *data);
 // utils.c
 int		ft_atoi(const char *nptr);
 int		ft_isspace(char c);
-void	write_message(int philo_id, char *message, t_data *data, int fork_id);
+void	write_message(int philo_id, char *message, t_data *data, int fork_id, char *color);
 void	error(char *error_msg);
 
 // main.c 

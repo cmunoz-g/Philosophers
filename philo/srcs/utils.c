@@ -6,7 +6,7 @@ void	error(char *error_msg)
 	exit(EXIT_FAILURE);
 }
 
-void	write_message(int philo_id, char *message, t_data *data, int fork_id) // meter colores y demas, meter que si cogen un tenedor diga que tenedor es?
+void	write_message(int philo_id, char *message, t_data *data, int fork_id, char *color) 
 {
 	int	ms;
 
@@ -16,9 +16,12 @@ void	write_message(int philo_id, char *message, t_data *data, int fork_id) // me
 	if (!data->dead)
 	{
 		if (!fork_id)
-			printf("%dms	%d %s\n", (ms - data->start), philo_id, message); 
+			printf("%s%dms\t%d %s\n", color, (ms - data->start), philo_id, message); 
 		else
-			printf("%dms	%d %s %d\n", (ms - data->start), philo_id, message, fork_id);
+		{
+			printf("%s%dms\t%d %s %d "EM_FORK, color, (ms - data->start), philo_id, message, fork_id);
+			printf("\n");
+		}
 	}
 	pthread_mutex_unlock(&(data->dead_mutex));
 	pthread_mutex_unlock(&(data->write_mutex));
