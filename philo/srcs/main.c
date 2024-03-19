@@ -4,7 +4,7 @@
 
 // revisar lo del >= en time_to_die (monitoring.c)
 
-// colores 
+// pasar leaks
 
 int	main(int argc, char *argv[])
 {
