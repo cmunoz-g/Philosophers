@@ -1,7 +1,5 @@
 #include "philo.h"
 
-// arreglar que cuando le metemos limite de comidas, coman todos. ademas, que termine con otro mensaje
-
 // arreglar para que salga el mensaje de morir el ultimo
 
 // arreglar para limpiar todos los threads si falla 1
