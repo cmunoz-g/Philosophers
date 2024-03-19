@@ -31,6 +31,8 @@ void	*dinner(void *pointer)
 	t_philo	*philo;
 	
 	philo = (t_philo *)pointer;
+	//if (philo->philo_id % 2)
+		//precise_usleep(1);
 	while (!check_end(philo))
 	{
 		eat(philo);

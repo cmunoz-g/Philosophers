@@ -6,15 +6,20 @@ void	error(char *error_msg)
 	exit(EXIT_FAILURE);
 }
 
-void	write_message(int philo_id, char *message, t_data *data) // meter colores y demas, meter que si cogen un tenedor diga que tenedor es?
+void	write_message(int philo_id, char *message, t_data *data, int fork_id) // meter colores y demas, meter que si cogen un tenedor diga que tenedor es?
 {
 	int	ms;
 
 	pthread_mutex_lock(&(data->write_mutex));
-	ms = get_time(data->start);
+	ms = get_time();
 	pthread_mutex_lock(&(data->dead_mutex));
 	if (!data->dead)
-		printf("%dms	%d %s\n", ms, philo_id, message); 
+	{
+		if (!fork_id)
+			printf("%dms	%d %s\n", (ms - data->start), philo_id, message); 
+		else
+			printf("%dms	%d %s %d\n", (ms - data->start), philo_id, message, fork_id);
+	}
 	pthread_mutex_unlock(&(data->dead_mutex));
 	pthread_mutex_unlock(&(data->write_mutex));
 }

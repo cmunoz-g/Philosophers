@@ -48,6 +48,7 @@ typedef struct	s_data
 // actions.c
 void	dream(t_philo *philo);
 void	eat(t_philo *philo);
+void	eat_aux(t_philo *philo, t_fork *first, t_fork *second);
 void	think(t_philo *philo);
 
 // checks.c
@@ -73,13 +74,13 @@ int		full_status(t_data *data);
 int		dead_status(t_data *data);
 
 // time.c
-int		get_time(int start_time);
-void	precise_usleep(t_data *data, int ms);
+int		get_time(void);
+void	precise_usleep(int ms);
 
 // utils.c
 int		ft_atoi(const char *nptr);
 int		ft_isspace(char c);
-void	write_message(int philo_id, char *message, t_data *data);
+void	write_message(int philo_id, char *message, t_data *data, int fork_id);
 void	error(char *error_msg);
 
 // main.c 

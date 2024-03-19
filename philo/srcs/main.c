@@ -1,13 +1,26 @@
 #include "philo.h"
 
-// arreglar el problema de 1 philo solo
+// con 4 410 200 200 hay muerte y deadlock
 
-// con 5 800 200 200  y  5 800 200 200 7 el 1 se muere :(
-
-// con 4 410 200 200 el 1 se muere
+// arreglar que cuando le metemos limite de comidas, coman todos. ademas, que termine con otro mensaje
 
 // arreglar para que salga el mensaje de morir el ultimo
 
+// arreglar para limpiar todos los threads si falla 1
+
+// colores 
+
+void	whichforks(t_data data) // borrar
+{
+	int j = 0;
+
+	while (j < data.nbr_philos)
+	{
+		printf("%d has left fork %d and right fork %d\n",j + 1, data.philos[j].left_fork->fork_id, data.philos[j].right_fork->fork_id);
+		j++;
+	}
+	exit(0);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -17,6 +30,7 @@ int	main(int argc, char *argv[])
 	{
 		check_input(argc, argv, &data);
 		init_data(&data);
+		//whichforks(data);
 		create_threads(&data);
 		clean(&data); 
 	}

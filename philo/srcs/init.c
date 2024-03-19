@@ -36,7 +36,7 @@ void	init_data(t_data *data)
 {
 	data->dead = false;
 	data->finished = 0;
-	data->start = get_time(0);
+	data->start = get_time();
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->nbr_philos);
 	if (!data->philos)
 		error("Memory issues while allocating philo structures");
