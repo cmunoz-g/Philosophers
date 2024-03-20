@@ -2,8 +2,6 @@
 
 // revisar lo del >= en time_to_die (monitoring.c)
 
-// pasar leaks en 42 Mac
-
 // void	leaks(void)
 // {
 // 	system("leaks philo");
