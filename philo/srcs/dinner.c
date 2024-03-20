@@ -1,7 +1,5 @@
 #include "philo.h"
 
-// revisar si usar pthread join o detach
-
 void	create_threads(t_data *data)
 {
 	pthread_t		monitor;

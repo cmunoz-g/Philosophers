@@ -1,15 +1,19 @@
 #include "philo.h"
 
-// ver que hacer con los error return de los mutex init
-
 // revisar lo del >= en time_to_die (monitoring.c)
 
-// pasar leaks
+// pasar leaks en 42 Mac
+
+// void	leaks(void)
+// {
+// 	system("leaks philo");
+// }
 
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 
+	// atexit(leaks);
 	if (argc == 5 || argc == 6)
 	{
 		check_input(argc, argv, &data);

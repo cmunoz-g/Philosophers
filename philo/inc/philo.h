@@ -72,6 +72,8 @@ int		check_error(t_philo *philo);
 
 // clean.c
 void	clean(t_data *data);
+void	clean_mutex(t_data *data, int mutex_flag);
+void	clean_fork_mutex(t_data *data, int fork_mutex_flag);
 
 // dinner.c
 void	*dinner(void *philo);

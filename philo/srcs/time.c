@@ -20,7 +20,7 @@ void	precise_usleep(int ms, t_data *data)
 
 	start = get_time(data);
 	while (get_time(data) - start < ms)
-		if (usleep(500)) // 500 o 50?
+		if (usleep(500))
 		{
 			pthread_mutex_lock(&(data->error_mutex));
 			data->error_flag = true;

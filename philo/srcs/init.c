@@ -7,8 +7,11 @@ void	init_forks(t_data *data)
 	while (i < data->nbr_philos)
 	{
 		data->forks[i].fork_id = i + 1;
-		if (pthread_mutex_init(&(data->forks[i].fork_mutex), NULL)) // revisar , si esto falla deberia destruirlos antes de salir con exit?
+		if (pthread_mutex_init(&(data->forks[i].fork_mutex), NULL))
+		{
+			clean_fork_mutex(data, i);
 			error("Could not initialize a fork mutex");
+		}
 		i++;
 	}
 }
@@ -45,13 +48,13 @@ void	init_data(t_data *data)
 	if (!data->forks)
 		error("Memory issues while allocating fork structures");
 	if (pthread_mutex_init(&data->dead_mutex, NULL))
-		error("Could not initialize dead mutex");
+		(clean_mutex(data, 0), error("Could not initialize dead mutex"));
 	if (pthread_mutex_init(&data->meal_mutex, NULL))
-	 	error("Could not initialize meal mutex");
+	 	(clean_mutex(data, 1), error("Could not initialize meal mutex"));
 	if (pthread_mutex_init(&data->write_mutex, NULL))
-		error("Could not initialize write mutex");
+		(clean_mutex(data, 2), error("Could not initialize write mutex"));
 	if (pthread_mutex_init(&data->error_mutex, NULL))
-		error("Could not initialize error mutex");
+		(clean_mutex(data, 3), error("Could not initialize error mutex"));
 	init_forks(data);
 	init_philos(data);
 }

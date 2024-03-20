@@ -17,6 +17,7 @@ int		check_end(t_philo *philo)
 	pthread_mutex_lock(&(philo->data->dead_mutex));
 	if (philo->data->dead)
 	{
+		precise_usleep(1, philo->data); // para delayear el ultimo mensaje y que sea siempre el ultimo de comer o el de muerte. Esta bien?
 		pthread_mutex_unlock(&(philo->data->dead_mutex));
 		return (1);
 	}
