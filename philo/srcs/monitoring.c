@@ -8,7 +8,7 @@ int	dead_status(t_data *data)
 	while (i < data->nbr_philos)
 	{
 		pthread_mutex_lock(&(data->meal_mutex));
-		if ((get_time(data) - data->philos[i].last_meal) > data->time_to_die) // >=? preguntar a Mario
+		if ((get_time(data) - data->philos[i].last_meal) >= data->time_to_die) 
 		{			
 			write_message((i + 1), "died\t\t   "EM_DEAD, data, 0, RED); 
 			pthread_mutex_lock(&(data->dead_mutex));

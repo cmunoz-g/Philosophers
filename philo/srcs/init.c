@@ -40,7 +40,6 @@ void	init_data(t_data *data)
 {
 	data->dead = false;
 	data->error_flag = false;
-	data->start = get_time(data);
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->nbr_philos);
 	if (!data->philos)
 		error("Memory issues while allocating philo structures");
@@ -55,6 +54,7 @@ void	init_data(t_data *data)
 		(clean_mutex(data, 2), error("Could not initialize write mutex"));
 	if (pthread_mutex_init(&data->error_mutex, NULL))
 		(clean_mutex(data, 3), error("Could not initialize error mutex"));
+	data->start = get_time(data);
 	init_forks(data);
 	init_philos(data);
 }

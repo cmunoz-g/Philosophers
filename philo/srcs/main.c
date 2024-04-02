@@ -1,6 +1,8 @@
 #include "philo.h"
 
-// revisar lo del >= en time_to_die (monitoring.c)
+// revisar el delay de 1 ms para que salga al final el msg de muerte
+// cuando pongo nbr max meals deberia salir el ultimo mensaje el de comer?
+// revisar nbr max meals a 0
 
 // void	leaks(void)
 // {

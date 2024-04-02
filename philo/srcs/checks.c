@@ -49,7 +49,7 @@ void	check_input(int argc, char **argv, t_data *data)
 	while (argv[i])
 		check_nbr(argv[i++]);
 	data->nbr_philos = ft_atoi(argv[1]);
-	if (data->nbr_philos <= 0) // comprobar si deberia meter limite para 200
+	if (data->nbr_philos <= 0) 
 		error("Not enough philosophers!");
 	data->time_to_die = ft_atoi(argv[2]);
 	if (data->time_to_die <= 0)
