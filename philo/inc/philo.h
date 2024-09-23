@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/18 10:07:22 by cmunoz-g          #+#    #+#             */
+/*   Updated: 2024/04/20 11:38:32 by cmunoz-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -18,15 +30,15 @@
 # define EM_FORK "🍴"
 # define EM_THINK "🤯"
 
-typedef struct	s_data	t_data;
+typedef struct s_data	t_data;
 
-typedef	struct	s_fork
+typedef struct s_fork
 {
-	pthread_mutex_t fork_mutex;
+	pthread_mutex_t	fork_mutex;
 	int				fork_id;
 }				t_fork;
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	pthread_t		thread_id;
 	int				philo_id;
@@ -38,7 +50,7 @@ typedef struct	s_philo
 	struct s_data	*data;
 }				t_philo;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int				nbr_philos;
 	int				time_to_die;
@@ -49,7 +61,7 @@ typedef struct	s_data
 	int				argc;
 	bool			dead;
 	bool			error_flag;
-	pthread_mutex_t error_mutex;
+	pthread_mutex_t	error_mutex;
 	pthread_mutex_t	dead_mutex;
 	pthread_mutex_t	meal_mutex;
 	pthread_mutex_t	write_mutex;
@@ -96,9 +108,10 @@ void	precise_usleep(int ms, t_data *data);
 // utils.c
 int		ft_atoi(const char *nptr);
 int		ft_isspace(char c);
-void	write_message(int philo_id, char *message, t_data *data, int fork_id, char *color);
+void	write_msg(int philo_id, char *message, t_data *data, int fork_id);
 void	error(char *error_msg);
+char	*get_color(char *message);
 
 // main.c 
-int	main(int argc, char *argv[]);
+int		main(int argc, char *argv[]);
 #endif

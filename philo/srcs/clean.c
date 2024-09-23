@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 11:41:25 by cmunoz-g          #+#    #+#             */
+/*   Updated: 2024/04/20 11:41:48 by cmunoz-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	clean(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->nbr_philos)
@@ -40,9 +52,10 @@ void	clean_mutex(t_data *data, int mutex_flag)
 	if (data->forks)
 		free(data->forks);
 }
+
 void	clean_fork_mutex(t_data *data, int fork_mutex_flag)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < fork_mutex_flag)

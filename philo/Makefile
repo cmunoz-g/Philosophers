@@ -1,7 +1,7 @@
 NAME = philo
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
-LDFLAGS = -fsanitize=thread
+LDFLAGS = -fsanitize=thread 
 INCLUDE = inc/
 FOLDER = srcs/
 OBJFOLDER = obj/

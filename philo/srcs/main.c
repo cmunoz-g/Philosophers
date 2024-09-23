@@ -1,25 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 11:43:27 by cmunoz-g          #+#    #+#             */
+/*   Updated: 2024/06/11 10:51:44 by cmunoz-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
-
-// revisar el delay de 1 ms para que salga al final el msg de muerte
-// cuando pongo nbr max meals deberia salir el ultimo mensaje el de comer?
-// revisar nbr max meals a 0
-
-// void	leaks(void)
-// {
-// 	system("leaks philo");
-// }
 
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 
-	// atexit(leaks);
 	if (argc == 5 || argc == 6)
 	{
 		check_input(argc, argv, &data);
 		init_data(&data);
 		create_threads(&data);
-		clean(&data); 
+		clean(&data);
 	}
 	else
 		error("Wrong number of arguments");

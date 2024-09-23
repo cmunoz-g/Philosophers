@@ -1,6 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checks.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmunoz-g <cmunoz-g@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/20 11:39:57 by cmunoz-g          #+#    #+#             */
+/*   Updated: 2024/04/23 09:14:29 by cmunoz-g         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-int		check_error(t_philo *philo)
+/**
+ * check_error
+ *
+ * Checks if there has been an error flagged within the shared data among 
+ * philosophers.
+ * This function locks the error mutex, checks the error flag, 
+ * and then unlocks the mutex.
+ *
+ * @param philo	Pointer to the philosopher structure.
+ * @return		Returns 1 if an error is flagged, 0 otherwise.
+ */
+
+int	check_error(t_philo *philo)
 {
 	pthread_mutex_lock(&(philo->data->error_mutex));
 	if (philo->data->error_flag == true)
@@ -12,12 +36,24 @@ int		check_error(t_philo *philo)
 	return (0);
 }
 
-int		check_end(t_philo *philo)
+/**
+ * check_end
+ *
+ * Checks if the simulation should end based on the death of a philosopher.
+ * This function locks the death mutex, checks the death flag,
+ * and, if set, performs a brief sleep before unlocking 
+ * the mutex and returning.
+ *
+ * @param philo	Pointer to the philosopher structure.
+ * @return		Returns 1 if a philosopher is dead, 0 otherwise.
+ */
+
+int	check_end(t_philo *philo)
 {
 	pthread_mutex_lock(&(philo->data->dead_mutex));
 	if (philo->data->dead)
 	{
-		precise_usleep(1, philo->data); // para delayear el ultimo mensaje y que sea siempre el ultimo de comer o el de muerte. Esta bien?
+		precise_usleep(1, philo->data);
 		pthread_mutex_unlock(&(philo->data->dead_mutex));
 		return (1);
 	}
@@ -38,7 +74,6 @@ void	check_nbr(char *str)
 			error("Wrong input");
 		i++;
 	}
-
 }
 
 void	check_input(int argc, char **argv, t_data *data)
@@ -49,7 +84,7 @@ void	check_input(int argc, char **argv, t_data *data)
 	while (argv[i])
 		check_nbr(argv[i++]);
 	data->nbr_philos = ft_atoi(argv[1]);
-	if (data->nbr_philos <= 0) 
+	if (data->nbr_philos <= 0)
 		error("Not enough philosophers!");
 	data->time_to_die = ft_atoi(argv[2]);
 	if (data->time_to_die <= 0)
@@ -61,9 +96,10 @@ void	check_input(int argc, char **argv, t_data *data)
 	if (data->time_to_sleep <= 0)
 		error("Not enough time to sleep");
 	if (argc == 6)
-		data->nbr_max_meals = ft_atoi(argv[5]); // revisar el caso en el que nbr_max_meals es 0
+		data->nbr_max_meals = ft_atoi(argv[5]);
 	data->argc = argc;
 }
+
 int	check_full(t_data *data)
 {
 	int	i;
