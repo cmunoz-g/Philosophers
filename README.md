@@ -22,7 +22,7 @@ The implementation uses:
 - **Deadlock Prevention**: Philosophers only pick up both forks if both are available, ensuring no deadlock occurs. Logic for which fork to go for is implemented.
 - **Precision Logging**: States (eating, sleeping, thinking, death) are logged with millisecond precision to monitor behavior accurately.
 - **Robust Error Handling**: Implements error handling mechanisms for system calls like `usleep` to maintain stability and reliability.
-- 
+  
 ## How to Use
 1. **Clone the Repository**:
     ```bash
