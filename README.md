@@ -1,47 +1,48 @@
 # 🧠 Philosophers
 
-## Introduction
-The **Philosophers** project is part of the 42 curriculum, focusing on multi-threaded programming and synchronization mechanisms in C. The project is based on the classic "Dining Philosophers Problem," a fundamental problem in concurrent programming, which illustrates the challenges of resource sharing and deadlock prevention.
+Multi-threaded C program simulating the Dining Philosophers problem. Demonstrates concurrency, synchronization, and deadlock prevention using threads and mutexes.
 
-## Problem Description
-The "Dining Philosophers Problem" involves a group of philosophers seated around a circular table. There is a bowl of spaghetti in the center, and between each pair of philosophers is a single fork. Each philosopher can be in one of three states:
+---
 
-- **Eating**: A philosopher can only eat if they have acquired both the fork on their left and the fork on their right.
-- **Thinking**: A philosopher who is not eating is thinking.
-- **Sleeping**: After eating, a philosopher will sleep for a specified duration.
+## Build and run
 
-The challenge is to ensure that no philosopher starves while avoiding deadlocks and race conditions. A deadlock occurs when all philosophers pick up the fork on their right at the same time and are unable to pick up the fork on their left, leading to an infinite wait.
+```bash
+# Clone
+ git clone https://github.com/cmunoz-g/Philosophers.git
+ cd Philosophers/philo
 
-## Solution Overview
-The implementation uses:
-1. **Threads**: Each philosopher is represented by a thread that executes actions concurrently. An additional thread serves as a monitor, overseeing the philosophers' states.
-2. **Mutexes**: Each fork is protected by a mutex to prevent simultaneous access by multiple philosophers, avoiding race conditions. Additional mutexes protect other shared data.
-4. **Memory Management**: All dynamically allocated memory and mutexes are properly cleaned up using the `clean` and `clean_mutex` functions to avoid memory leaks and ensure safe resource deallocation.
+# Build
+make
 
-### Key Features
-- **Deadlock Prevention**: Philosophers only pick up both forks if both are available, ensuring no deadlock occurs. Logic for which fork to go for is implemented.
-- **Precision Logging**: States (eating, sleeping, thinking, death) are logged with millisecond precision to monitor behavior accurately.
-- **Robust Error Handling**: Implements error handling mechanisms for system calls like `usleep` to maintain stability and reliability.
-  
-## How to Use
-1. **Clone the Repository**:
-    ```bash
-    git clone https://github.com/cmunoz-g/Philosophers.git
-    ```
-2. **Navigate to the Project Directory**:
-    ```bash
-    cd Philosophers/philo
-    ```
-3. **Compile the Program**:
-    ```bash
-    make
-    ```
-4. **Run the Program**:
-    ```bash
-    ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
-    ```
-   - `number_of_philosophers`: Number of philosophers and forks.
-   - `time_to_die`: Time (in milliseconds) before a philosopher dies if they haven't started eating.
-   - `time_to_eat`: Time (in milliseconds) a philosopher spends eating.
-   - `time_to_sleep`: Time (in milliseconds) a philosopher spends sleeping.
-   - `[number_of_times_each_philosopher_must_eat]`: Optional argument. If provided, the simulation ends when all philosophers have eaten at least this many times.
+# Run
+./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]
+```
+
+**Arguments**
+
+* `number_of_philosophers`: number of philosophers and forks.
+* `time_to_die`: time (ms) before a philosopher dies without eating.
+* `time_to_eat`: time (ms) spent eating.
+* `time_to_sleep`: time (ms) spent sleeping.
+* `[number_of_times_each_philosopher_must_eat]`: optional; simulation ends once all philosophers have eaten this many times.
+
+---
+
+## Features
+
+* **Deadlock prevention** — philosophers only eat when both forks are available.
+* **Precision logging** — state changes (eating, sleeping, thinking, death) tracked with millisecond precision.
+* **Robust error handling** — safe handling of system calls like `usleep`.
+* **Resource cleanup** — mutexes and dynamic allocations freed safely.
+
+---
+
+## Implementation details
+
+* **Threads**: each philosopher is represented by a thread. A monitor thread observes and detects deaths or completion.
+* **Mutexes**: each fork guarded by a mutex; other mutexes protect shared state.
+* **Logic**: fork acquisition order prevents deadlocks; philosophers alternate between eating, sleeping, and thinking.
+* **Cleanup**: helper functions (`clean`, `clean_mutex`) ensure resources are released.
+
+---
+
